@@ -207,16 +207,16 @@ if __name__ == '__main__':
     env = ResourceGathering()
     numberOfStates = 125
     numberOfObjectives = 3
-    epsilon = 0.9
-    epsilonDecrease = 0.99
+    epsilon = 0.999
+    epsilonDecrease = 0.995
     acMeth = actionMethods(epsilon,epsilonDecrease)
-    ref_point = np.array([-10, -10000,-1000])
-    gamma = 0.8
+    ref_point = np.array([-1, -30,-30])
+    gamma = 0.7
 
-    #agent call
+    #agent call 
     agent = Pareto(env,acMeth, lambda s, q: acMeth.get_action(s, q, env), ref_point, nO=numberOfObjectives,nS = numberOfStates, gamma=gamma)
-    agent.train(500,40)
+    agent.train(1000,500)
 
     #metrics
-    metrics.plotGraph()
-    metrics.plot_pareto_frontier()
+    #metrics.plotGraph()
+    metrics.plot_pareto_frontier() 
