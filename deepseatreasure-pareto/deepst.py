@@ -53,7 +53,7 @@ class DeepSeaTreasure(gym.Env):
 
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
-    def __init__(self, dst_map=DEFAULT_MAP, float_state=False):
+    def __init__(self, dst_map=CONCAVE_MAP, float_state=False):
         self.size = 11
         self.window_size = 512
         self.window = None
@@ -68,7 +68,7 @@ class DeepSeaTreasure(gym.Env):
 
         # The map of the deep sea treasure (convex version)
         self.sea_map = dst_map
-        assert self.sea_map.shape == DEFAULT_MAP.shape, "The map shape must be 11x11"
+        assert self.sea_map.shape == CONCAVE_MAP.shape, "The map shape must be 11x11"
         
         self.dir = {
             0: np.array([-1, 0], dtype=np.int32),  # up
